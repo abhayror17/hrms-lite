@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
 import { employeeApi, attendanceApi } from '../services/api';
-import { Users, UserCheck, UserX, CalendarDays, Sparkles, ArrowRight, BarChart3 } from 'lucide-react';
+import { Users, UserCheck, UserX, CalendarDays, Sparkles, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Loading from '../components/common/Loading';
 import ErrorMessage from '../components/common/ErrorMessage';
-import AttendanceChart from '../components/dashboard/AttendanceChart';
 import './Dashboard.css';
 
 export default function Dashboard() {
@@ -14,7 +13,6 @@ export default function Dashboard() {
         presentToday: 0,
         absentToday: 0
     });
-    const [weeklyStats, setWeeklyStats] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
 
@@ -29,7 +27,6 @@ export default function Dashboard() {
             const employees = await employeeApi.getAll();
             const today = new Date().toISOString().split('T')[0];
             const todayAttendance = await attendanceApi.getAll(today);
-            const weekly = await attendanceApi.getWeeklyStats();
 
             const presentCount = todayAttendance.filter(a => a.status === 'Present').length;
             const absentCount = todayAttendance.filter(a => a.status === 'Absent').length;
@@ -40,7 +37,6 @@ export default function Dashboard() {
                 presentToday: presentCount,
                 absentToday: absentCount
             });
-            setWeeklyStats(weekly);
         } catch (err) {
             setError(err.message);
         } finally {
@@ -141,15 +137,6 @@ export default function Dashboard() {
                         </div>
                     </Link>
                 ))}
-            </div>
-
-            {/* Attendance Chart Section */}
-            <div className="dashboard-section">
-                <div className="section-header">
-                    <BarChart3 size={20} className="section-icon" />
-                    <h2>Attendance Trends</h2>
-                </div>
-                <AttendanceChart data={weeklyStats} />
             </div>
 
             {/* Quick Actions */}
