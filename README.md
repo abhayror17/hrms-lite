@@ -2,6 +2,9 @@
 
 A high-performance, full-stack HRMS solution designed for speed, scalability, and developer experience. Built with a modern **FastAPI** backend and a reactive **Vite + React** frontend.
 
+FRONTEND -- https://new-hrms-one.vercel.app/
+BACKEND -- https://hrms-backend-pyz3.onrender.com
+
 ---
 
 ## 🚀 Core Features
