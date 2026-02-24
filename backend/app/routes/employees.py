@@ -63,9 +63,10 @@ def get_dashboard_stats(db: Session = Depends(get_db)):
 def create_employee(employee: EmployeeCreate, db: Session = Depends(get_db)):
     """Create a new employee with validation"""
     
-    # Check for duplicate employee_id
+    # Check for duplicate employee_id (only among active employees)
     existing_by_emp_id = db.query(Employee).filter(
-        Employee.employee_id == employee.employee_id
+        Employee.employee_id == employee.employee_id,
+        Employee.is_active == True
     ).first()
     if existing_by_emp_id:
         raise HTTPException(
@@ -73,9 +74,10 @@ def create_employee(employee: EmployeeCreate, db: Session = Depends(get_db)):
             detail=f"Employee with ID '{employee.employee_id}' already exists"
         )
     
-    # Check for duplicate email
+    # Check for duplicate email (only among active employees)
     existing_by_email = db.query(Employee).filter(
-        Employee.email == employee.email.lower()
+        Employee.email == employee.email.lower(),
+        Employee.is_active == True
     ).first()
     if existing_by_email:
         raise HTTPException(
@@ -169,7 +171,7 @@ def update_employee(
 
 @router.delete("/{employee_id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_employee(employee_id: str, db: Session = Depends(get_db)):
-    """Delete an employee (soft delete by setting is_active to False)"""
+    """Delete an employee (hard delete - removes from database)"""
     employee = db.query(Employee).filter(Employee.id == employee_id).first()
     if not employee:
         raise HTTPException(
@@ -177,8 +179,8 @@ def delete_employee(employee_id: str, db: Session = Depends(get_db)):
             detail=f"Employee with ID '{employee_id}' not found"
         )
     
-    # Soft delete
-    employee.is_active = False
+    # Hard delete - actually remove from database
+    db.delete(employee)
     db.commit()
     return None
 
