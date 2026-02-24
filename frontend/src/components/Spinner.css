@@ -1,0 +1,39 @@
+.spinner-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.spinner-icon {
+  animation: spin 1s linear infinite;
+  color: #3182ce;
+}
+
+.spinner-sm .spinner-icon {
+  font-size: 1.5rem;
+}
+
+.spinner-md .spinner-icon {
+  font-size: 2.5rem;
+}
+
+.spinner-lg .spinner-icon {
+  font-size: 3.5rem;
+}
+
+.spinner-text {
+  margin-top: 1rem;
+  color: #4a5568;
+  font-weight: 500;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

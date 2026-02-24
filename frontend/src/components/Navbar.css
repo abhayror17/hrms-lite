@@ -1,0 +1,105 @@
+.main-nav {
+  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 0.6rem 0;
+}
+
+.brand-icon {
+  font-size: 1.35rem;
+  color: #63b3ed;
+}
+
+.brand-text {
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.5px;
+}
+
+.main-nav .nav-link {
+  color: rgba(255, 255, 255, 0.85);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  margin: 2px 4px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.main-nav .nav-link:hover {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.main-nav .nav-link.active {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.main-nav .container {
+  max-width: 1400px;
+}
+
+.main-nav .navbar-toggler {
+  border: none;
+  padding: 0.5rem;
+}
+
+.main-nav .navbar-toggler:focus {
+  box-shadow: none;
+}
+
+.main-nav .navbar-toggler-icon {
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 991px) {
+  .main-nav {
+    padding: 0.5rem 0;
+  }
+
+  .main-nav .navbar-collapse {
+    margin-top: 0.5rem;
+    padding: 0.5rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .main-nav .navbar-nav {
+    gap: 0.25rem;
+  }
+
+  .main-nav .nav-link {
+    padding: 0.75rem 1rem;
+    margin: 0;
+    border-radius: 6px;
+  }
+
+  .brand-text {
+    font-size: 1.15rem;
+  }
+
+  .brand-icon {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-nav {
+    padding: 0.4rem 0;
+  }
+
+  .brand-text {
+    font-size: 1.1rem;
+  }
+
+  .brand-icon {
+    font-size: 1.15rem;
+  }
+
+  .main-nav .nav-link {
+    padding: 0.6rem 0.875rem;
+    font-size: 0.9rem;
+  }
+}
