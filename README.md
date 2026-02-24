@@ -173,7 +173,7 @@ hrms-lite/
 
 ## 🎨 UI Features
 
-- 🌙 Dark theme with gradient accents
+- 🌙 Light theme with gradient accents
 - ✨ Smooth animations and transitions
 - 📱 Fully responsive mobile design
 - 🎯 Intuitive navigation with bottom nav bar
