@@ -58,7 +58,7 @@ pip install -r requirements.txt
 # Example: DATABASE_URL=postgresql://user:password@localhost:5432/hrms_lite
 
 # Start the API server
-python main.py
+python -m uvicorn app.main:app --reload
 ```
 *   **API Docs**: `http://localhost:8000/docs`
 
