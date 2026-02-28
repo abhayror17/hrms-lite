@@ -11,9 +11,9 @@ const api = axios.create({
 
 // Employee APIs
 export const employeeService = {
-  getAll: (params = {}) => api.get('/api/employees', { params }),
+  getAll: (params = {}) => api.get('/api/employees/', { params }),
   getById: (id) => api.get(`/api/employees/${id}`),
-  create: (data) => api.post('/api/employees', data),
+  create: (data) => api.post('/api/employees/', data),
   update: (id, data) => api.put(`/api/employees/${id}`, data),
   delete: (id) => api.delete(`/api/employees/${id}`),
   getSummary: (id) => api.get(`/api/employees/${id}/summary`),
@@ -22,9 +22,9 @@ export const employeeService = {
 
 // Attendance APIs
 export const attendanceService = {
-  getAll: (params = {}) => api.get('/api/attendance', { params }),
+  getAll: (params = {}) => api.get('/api/attendance/', { params }),
   getByEmployee: (employeeId, params = {}) => api.get(`/api/attendance/employee/${employeeId}`, { params }),
-  create: (data) => api.post('/api/attendance', data),
+  create: (data) => api.post('/api/attendance/', data),
   update: (id, status) => api.put(`/api/attendance/${id}?status=${status}`),
   delete: (id) => api.delete(`/api/attendance/${id}`),
   getToday: () => api.get('/api/attendance/today'),

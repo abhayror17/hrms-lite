@@ -19,7 +19,8 @@ app = FastAPI(
     version="1.0.0",
     docs_url="/docs",
     redoc_url="/redoc",
-    lifespan=lifespan
+    lifespan=lifespan,
+    redirect_slashes=False  # Prevent 307 redirects
 )
 
 # Configure CORS from environment variable
